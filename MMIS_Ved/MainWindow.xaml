@@ -1,0 +1,113 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MMIS_Ved"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="506" Width="760" BorderThickness="1" BorderBrush ="{StaticResource C1}" Name="W" ResizeMode="CanResize" WindowStyle="None">
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+        CaptionHeight="0"
+        ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="20" ShadowDepth="4" Color="Black"/>
+    </Window.Effect>
+    <Window.Resources>
+        <DrawingImage x:Key="ImagePfoto">
+            <DrawingImage.Drawing>
+                <GeometryDrawing Brush="LightGray"  Geometry="m18.845 17.295c-1.008-1.345-2.437-2.327-4.089-2.754l-.051-.011-1.179 1.99c-.002.552-.448.998-1 1-.55 0-1-.45-1.525-1.774 0-.009 0-.021 0-.032 0-.691-.56-1.25-1.25-1.25s-1.25.56-1.25 1.25v.033-.002c-.56 1.325-1.014 1.774-1.563 1.774-.552-.002-.998-.448-1-1l-1.142-1.994c-1.702.44-3.13 1.421-4.126 2.746l-.014.019c-.388.629-.628 1.386-.655 2.197v.007c.005.15 0 .325 0 .5v2c0 1.105.895 2 2 2h15.5c1.105 0 2-.895 2-2v-2c0-.174-.005-.35 0-.5-.028-.817-.268-1.573-.666-2.221l.011.02zm-14.345-12.005c0 2.92 1.82 7.21 5.25 7.21 3.37 0 5.25-4.29 5.25-7.21 0-.019 0-.042 0-.065 0-2.9-2.351-5.25-5.25-5.25s-5.25 2.351-5.25 5.25v.068z"/>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Resources>
+    <Grid Background="#FFFF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <DockPanel x:Name="Titel"  Background="{StaticResource C1}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="26" MouseDown="Drag" MouseLeftButtonDown="BorderColic">
+            <TextBlock Text="Ведомости" Foreground="{StaticResource C5}" HorizontalAlignment="Left" Margin="10 0, 0, 0" VerticalAlignment="Center"/>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Width="24" Height="24" BorderThickness="0" Margin="3" Style="{StaticResource BittonStyle_1A}" Click="CollapseWindow">
+                    <TextBlock Style="{StaticResource IconRes}" Text="&#xf068;" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Width="24" Height="24" BorderThickness="0" Margin="3" Style="{StaticResource BittonStyle_1A}" Click="ReturnSize">
+                    <TextBlock Style="{StaticResource IconRes}" Text="&#xf2d2;" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Width="24" Height="24" BorderThickness="0" Margin="3" Style="{StaticResource BittonStyle_1A}" Click="close_button">
+                    <TextBlock Style="{StaticResource IconRes}" Text="&#xf00d;" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,4"/>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <Frame Name="WindowFrame" Background="#FFFF" Grid.Row="2" Grid.Column="1" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"/>
+        <DockPanel x:Name="MainMenuTop" Background="{StaticResource C2}" Grid.Row="1" Grid.Column="1" Height="60" HorizontalAlignment="Stretch">
+            <StackPanel HorizontalAlignment="Right" Height="45" Margin="15, 0, 15, 0" Orientation="Horizontal">
+                <TextBlock Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15, 0, 15, 0">ФИО</TextBlock>
+                <Button Height="45" Width="45" Click="OpenOption" Style="{StaticResource IconButton}">
+                    <Image Source="{DynamicResource ImagePfoto}" Width="35" Height="35"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <Grid Name="HamGrid" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="60">
+            <StackPanel  x:Name="Hamburger" Width="60" HorizontalAlignment="Left" Background="{StaticResource C3}" Orientation="Vertical">
+                <ToggleButton Width="270" Height="60" HorizontalAlignment="Left"  VerticalAlignment="Center"  Style="{StaticResource ToggleButtonStyle_1B}" Click="HumChanE">
+                    <TextBlock Style="{StaticResource IconRes}" Text="   MMIS" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="270" Margin="15, 9, 15, 9"/>
+                </ToggleButton>
+                <Button Width="270" Height="45" Style="{StaticResource HamburgerButton}" HorizontalAlignment="left" Click="Open_PageMyVed">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource IconRes}" Text="" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15, 9, 15, 9"/>
+                        <TextBlock x:Name="Text1" Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="210">Мои ведомости/оценки</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="270" Height="45" Style="{StaticResource HamburgerButton}" HorizontalAlignment="left" Click="Open_PageMyDiagramm">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource IconRes}" Text="&#xf200;" FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="17, 9, 17, 9"/>
+                        <StackPanel Orientation="Vertical" Width="210" VerticalAlignment="Center">
+                            <TextBlock x:Name="Text8" Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="210">Анализ групп и</TextBlock>
+                            <TextBlock x:Name="Text2" Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="210">подразделений</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+                <Button Width="270" Height="54" Style="{StaticResource HamburgerButton}" HorizontalAlignment="left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource IconRes}" Text="&#xf100;&#xf007;&#xf101;" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12, 9, 17, 9"/>
+                        <StackPanel Orientation="Vertical" Width="210" VerticalAlignment="Center">
+                            <TextBlock x:Name="Text9" Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="210">Изменение студента</TextBlock>
+                            <TextBlock x:Name="Text3" Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="210"> в ведомости</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+                <Button Width="270" Height="45" Style="{StaticResource HamburgerButton}" HorizontalAlignment="left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource IconRes}" Text="&#xf2bc;" FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14, 9, 17, 9"/>
+                        <TextBlock x:Name="Text4" Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="210">Оценки студента</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="270" Height="45" Style="{StaticResource HamburgerButton}" HorizontalAlignment="left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource IconRes}" Text="&#xf085;" FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14, 9, 17, 9"/>
+                        <TextBlock x:Name="Text5" Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="210">Параметры ведомости</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="270" Height="45" Style="{StaticResource HamburgerButton}" HorizontalAlignment="left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource IconRes}" Text="&#xf0fe;" FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="19, 9, 19, 9"/>
+                        <TextBlock x:Name="Text6" Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="210">Создать ведомость</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Width="270" Height="45" Style="{StaticResource HamburgerButton}" HorizontalAlignment="left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource IconRes}" Text="&#xf0ea;" FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="19, 9, 19, 9"/>
+                        <TextBlock x:Name="Text7" Foreground="{StaticResource C5}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="210">Отчёты по ведомостям</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

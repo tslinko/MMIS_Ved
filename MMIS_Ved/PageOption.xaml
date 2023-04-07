@@ -1,0 +1,59 @@
+﻿<Page x:Class="PageOption"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MMIS_Ved"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageOption">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Border x:Name="MenuLog" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="top" Background="White" BorderBrush="LightGray" CornerRadius="10" Margin="30">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1" Color="Gray" BlurRadius="10"/>
+            </Border.Effect>
+            <Grid  Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontSize="20" Margin="12, 5, 10, 5" TextAlignment="Center">Логин:</TextBlock>
+                <TextBox x:Name="TB1" Grid.Row="1" TextAlignment="Left" Padding="10, 4 ,10 ,4" Style="{StaticResource TextEdit}" Width="300" Margin="10, 5, 10, 5"></TextBox>
+                <TextBlock IsHitTestVisible="False" Background="Transparent" Grid.Row="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12, 5, 10, 5" TextAlignment="Center" Padding="10, 0, 0, 0" Foreground="#8F8F8F" Text="Введите логин">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=TB1}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock Grid.Row="2" FontSize="20" Margin="12, 5, 10, 5" TextAlignment="Center">Пароль:</TextBlock>
+                <PasswordBox HorizontalAlignment="Left" x:Name="TB2" Grid.Row="3" Padding="10, 4 ,10 ,4 " Style="{StaticResource PasBox}" Width="300" Margin="10, 5, 10, 5" PasswordChanged="PasC"></PasswordBox>
+                <TextBlock x:Name="TBP" IsHitTestVisible="False" Background="Transparent" Grid.Row="3" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                           Margin="12, 5, 10, 5" TextAlignment="Center" Padding="10, 0, 0, 0" Foreground="#8F8F8F" Text="Введите пароль" Visibility="Collapsed"/>
+                <CheckBox Height="100" Style="{StaticResource ChekBox1}"  Grid.Row="4">
+                    
+                </CheckBox>
+                <Button Grid.Row="5" Style="{StaticResource BittonStyle_1B}" Margin="10">
+                    <TextBlock Text="Войти" FontSize="16" Background="Transparent" Foreground="White" Margin="5"/>
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
